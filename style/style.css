@@ -1,0 +1,320 @@
+:root {
+  --Soft-orange: hsl(35, 77%, 62%);
+  --Soft-red: hsl(5, 85%, 63%);
+  --Off-white: hsl(36, 100%, 99%);
+  --Grayish-blue: hsl(233, 8%, 79%);
+  --Dark-grayish-blue: hsl(236, 13%, 42%);
+  --Very-dark-blue: hsl(240, 100%, 5%);
+  --fw-400: 400;
+  --fw-700: 700;
+  --fw-800: 800;
+}
+/* --------- RESET ROLES --------- */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-size: 0.9375rem;
+  font-family: "Inter", sans-serif;
+  background-color: var(--Off-white);
+}
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* --------- Styling --------- */
+.container {
+  padding-inline: 15px;
+  padding-block: 1rem;
+  position: relative;
+}
+/* --------- header and nav --------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+header ul {
+  position: absolute;
+  background-color: white;
+  height: 100vh;
+  top: 0;
+  right: -300px;
+  width: 16rem;
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 7rem 1.5rem;
+  margin: 0;
+}
+header .manu__icon {
+  padding: 5px;
+  border-radius: 3px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 30;
+}
+header .manu__icon:hover {
+  background-color: #eee;
+}
+header .manu__icon.active + ul {
+  display: flex;
+  right: 0;
+  z-index: 20;
+}
+header .manu__icon svg.open,
+header .manu__icon svg.close {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+header .manu__icon svg.close {
+  display: none;
+}
+header .manu__icon.active svg.open {
+  display: none;
+}
+header .manu__icon.active svg.close {
+  display: block;
+}
+header ul li a {
+  text-decoration: none;
+  color: var(--Very-dark-blue);
+  transition: 0.3s;
+}
+header ul li a:hover {
+  color: var(--Soft-orange);
+}
+/* Large Screen Styling */
+@media screen and (width >= 47.9375rem) {
+  .container {
+    max-width: 60rem;
+    margin: auto;
+    padding-block: 2rem;
+  }
+  header ul {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.7rem;
+    right: 0;
+    height: 100%;
+    width: fit-content;
+    padding: 0;
+    background: 0;
+  }
+  header .manu__icon {
+    display: none;
+  }
+}
+@media screen and (width >= 85.376rem) {
+  .container {
+    max-width: 69.5rem;
+    margin: auto;
+    padding-inline: 0;
+    padding-block: 5rem;
+  }
+}
+/* --------- content --------- */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  transition: 0.3s;
+  z-index: -1;
+}
+.overlay.on {
+  opacity: 0.3;
+  z-index: 10;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-block: 2rem;
+}
+.content figcaption h1 {
+  line-height: 1;
+  font-size: 2.6rem;
+  padding-block: 1rem;
+  color: var(--Very-dark-blue);
+  font-weight: var(--fw-800);
+}
+.content .details p {
+  color: var(--Dark-grayish-blue);
+  margin-block-end: 2.5rem;
+  max-width: 21rem;
+}
+.content .details button {
+  display: block;
+  border: 0;
+  outline: 0;
+  line-height: 1;
+  background-color: var(--Soft-red);
+  color: var(--Off-white);
+  padding: 1rem 2rem;
+  font-weight: var(--fw-700);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.content .details button:hover {
+  background-color: var(--Very-dark-blue);
+}
+.new__section {
+  background-color: var(--Very-dark-blue);
+  padding: 20px 20px 0;
+  flex: 1;
+}
+.new__section h1 {
+  color: var(--Soft-orange);
+  font-size: 2.6rem;
+}
+.new__section div {
+  padding-block: 1.5rem;
+}
+.new__section div:not(:last-child) {
+  border-bottom: 1px solid var(--Dark-grayish-blue);
+}
+.new__section div a {
+  display: block;
+  font-weight: var(--fw-700);
+  text-decoration: none;
+  color: var(--Off-white);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  transition: 0.3s;
+}
+.new__section div a:hover {
+  color: var(--Soft-orange);
+}
+.new__section p {
+  color: var(--Grayish-blue);
+  line-height: 1.7;
+}
+/* --------- Other News --------- */
+.other__news figure {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.other__news figure img {
+  max-width: 100px;
+}
+.other__news figure figcaption span {
+  display: block;
+  font-size: 2rem;
+  font-weight: var(--fw-800);
+  color: var(--Grayish-blue);
+  line-height: 1;
+}
+.other__news figure figcaption a {
+  display: block;
+  font-weight: var(--fw-700);
+  margin-block: 0.5em;
+  color: var(--Very-dark-blue);
+  transition: 0.3s;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.other__news figure figcaption a:hover {
+  color: var(--Soft-red);
+}
+.other__news figure figcaption p {
+  color: var(--Dark-grayish-blue);
+}
+/* Large Screen Styling */
+@media screen and (width >= 47.9375rem) {
+  .content {
+    flex-direction: row;
+  }
+  .content figure {
+    flex-basis: 60%;
+  }
+  .content picture {
+    margin-block-end: 1.5rem;
+  }
+  .content figure figcaption {
+    display: flex;
+    gap: 2.5rem;
+  }
+  .content figcaption h1 {
+    font-size: 2.5rem;
+    padding: 0;
+    max-width: 18.75rem;
+  }
+  .other__news {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+}
+@media screen and (width >= 85.376rem) {
+  .content {
+    display: flex;
+    margin-block-start: 2.6rem;
+    margin-block-end: 5rem;
+  }
+  .content figure {
+    flex-basis: 65.8%;
+  }
+  .content picture {
+    margin-block-end: 2rem;
+  }
+  .content figure figcaption {
+    display: flex;
+    gap: 5rem;
+  }
+  .content figcaption h1 {
+    font-size: 3.5rem;
+    padding: 0;
+    max-width: 18.75rem;
+  }
+}
